@@ -31,7 +31,7 @@ final class SWXMLResponseParserTests: XCTestCase {
 
     func testExample() {
         givenCorrectData()
-        let forecats = self.sut.parse(forecastData: self.data)
+        let forecasts = self.sut.parse(forecastData: self.data)
         XCTAssertNotNil(self.sut)
     }
 
@@ -41,6 +41,12 @@ final class SWXMLResponseParserTests: XCTestCase {
         self.data = Bundle
             .module
             .url(forResource: "TestForecast", withExtension: "xml")?
-            .dataRepresentation
+            .dataContent()
+    }
+}
+
+private extension URL {
+    func dataContent() -> Data! {
+        try! Data(contentsOf: self)
     }
 }
