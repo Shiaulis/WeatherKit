@@ -9,8 +9,6 @@ import Foundation
 import Logger
 import SWXMLHash
 
-private struct SWXMLResponseParserLoggerModule: LoggerModule {}
-
 private enum Element: String {
 
     // forecast
@@ -36,7 +34,7 @@ public final class SWXMLResponseParser {
     // MARK: - Init
 
     public init() {
-        self.logger = PrintLogger(loggerModule: SWXMLResponseParserLoggerModule())
+        self.logger = PrintLogger(moduleName: "SWXMLResponseParserLoggerModule")
         self.dateFormatter = .init()
         self.dateFormatter.locale = .init(identifier: "et-EE")
         self.dateFormatter.dateFormat = "yyyy-MM-dd"
