@@ -12,7 +12,7 @@ public protocol NetworkClient {
     func requestPublisher(for endpoint: Endpoint) -> AnyPublisher<(data: Data, response: URLResponse), Swift.Error>
 }
 
-final class URLSessionNetworkClient: NSObject {
+final public class URLSessionNetworkClient: NSObject {
 
     private let urlSession = URLSession.shared
 
@@ -20,7 +20,7 @@ final class URLSessionNetworkClient: NSObject {
 
 extension URLSessionNetworkClient: NetworkClient {
 
-    func requestPublisher(for endpoint: Endpoint) -> AnyPublisher<(data: Data, response: URLResponse), Swift.Error> {
+    public func requestPublisher(for endpoint: Endpoint) -> AnyPublisher<(data: Data, response: URLResponse), Swift.Error> {
         let request: URLRequest
         do {
             request = try  endpoint.generateRequest()
@@ -34,7 +34,7 @@ extension URLSessionNetworkClient: NetworkClient {
             .eraseToAnyPublisher()
     }
 
-    enum Error: Swift.Error {
+    public enum Error: Swift.Error {
         case noDataFoundInResponse
         case dataTaskError(urlError: URLError)
     }

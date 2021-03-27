@@ -38,7 +38,7 @@ public struct PlaceDisplayItem: Identifiable {
 }
 
 extension ForecastDisplayItem {
-    static var test1: ForecastDisplayItem {
+    static public var test1: ForecastDisplayItem {
         .init(
             naturalDateDescription: "Today, 17 January",
             shortDateDescription: "Послезавтра",
@@ -47,7 +47,7 @@ extension ForecastDisplayItem {
         )
     }
 
-    static var test2: ForecastDisplayItem {
+    static public var test2: ForecastDisplayItem {
         .init(
             naturalDateDescription: "19 January",
             shortDateDescription: "19.01",
@@ -56,7 +56,7 @@ extension ForecastDisplayItem {
         )
     }
 
-    static var test3: ForecastDisplayItem {
+    static public var test3: ForecastDisplayItem {
         .init(
             naturalDateDescription: "19 January",
             shortDateDescription: "19.01",
@@ -68,7 +68,7 @@ extension ForecastDisplayItem {
 
 extension DayPartForecastDisplayItem {
 
-    static var test: DayPartForecastDisplayItem {
+    static public var test: DayPartForecastDisplayItem {
         .init(
             type: .night,
             weatherIconName: "cloud.sun.bolt.fill",
@@ -87,7 +87,7 @@ extension DayPartForecastDisplayItem {
         )
     }
 
-    static var test2: DayPartForecastDisplayItem {
+    static public var test2: DayPartForecastDisplayItem {
         .init(
             type: .day,
             weatherIconName: "cloud.sun.bolt.fill",
@@ -106,7 +106,7 @@ extension DayPartForecastDisplayItem {
         )
     }
 
-    static var test3: DayPartForecastDisplayItem {
+    static public var test3: DayPartForecastDisplayItem {
         .init(
             type: .day,
             weatherIconName: "cloud.sun.bolt.fill",
@@ -125,7 +125,7 @@ extension DayPartForecastDisplayItem {
         )
     }
 
-    static var test4: DayPartForecastDisplayItem {
+    static public var test4: DayPartForecastDisplayItem {
         .init(
             type: .day,
             weatherIconName: "cloud.sun.bolt.fill",
@@ -147,7 +147,7 @@ extension DayPartForecastDisplayItem {
 
 extension PlaceDisplayItem {
 
-    static var test1: PlaceDisplayItem {
+    static public var test1: PlaceDisplayItem {
         .init(
             name: "Harku",
             weatherIconName: "cloud.sun.bolt.fill",
@@ -155,7 +155,7 @@ extension PlaceDisplayItem {
         )
     }
 
-    static var test2: PlaceDisplayItem {
+    static public var test2: PlaceDisplayItem {
         .init(
             name: "Jõhvi",
             weatherIconName: "cloud.sun.bolt.fill",
