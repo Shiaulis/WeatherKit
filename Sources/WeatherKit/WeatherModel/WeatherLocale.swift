@@ -7,13 +7,6 @@
 
 import Foundation
 
-public protocol WeatherLocale {
-    static var currentLocale: WeatherLocale { get }
-}
-
-extension Locale: WeatherLocale {
-    public static var currentLocale: WeatherLocale {
-        Self.current
-    }
-
+public enum WeatherLocale {
+    case estonian, english, russian
 }

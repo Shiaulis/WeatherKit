@@ -7,9 +7,7 @@
 
 import Foundation
 
-import Foundation
-
-struct Endpoint {
+public struct Endpoint {
     static let scheme = "https"
     static let host = "ilmateenistus.ee"
 
@@ -42,7 +40,7 @@ extension Endpoint {
 
     // https://ilmateenistus.ee/ilma_andmed/xml/forecast.php?lang=rus
 
-    static func forecast(for locale: Locale = .current) -> Endpoint {
+    static func forecast(for locale: WeatherLocale) -> Endpoint {
         .init(
             path: "/ilma_andmed/xml/forecast.php",
             urlQueryItems: [.init(name: "lang", value: locale.queryItemLanguageCode())],
@@ -57,13 +55,12 @@ extension Endpoint {
     }
 }
 
-private extension Locale {
+private extension WeatherLocale {
     func queryItemLanguageCode() -> String {
-        switch self.languageCode {
-        case "en": return "eng"
-        case "et": return "est"
-        case "ru": return "rus"
-        default: return "eng"
+        switch self {
+        case .english: return "eng"
+        case .estonian: return "est"
+        case .russian: return "rus"
         }
     }
 }

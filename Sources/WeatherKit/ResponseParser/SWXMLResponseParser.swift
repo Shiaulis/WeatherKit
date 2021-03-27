@@ -45,7 +45,7 @@ public final class SWXMLResponseParser {
 
 extension SWXMLResponseParser: ResponseParser {
 
-    func parse(forecastData: Data) -> Result<[ForecastDisplayItem], Swift.Error> {
+    public func parse(forecastData: Data) -> Result<[ForecastDisplayItem], Swift.Error> {
         self.logger.log(information: "Parsing started")
         let xml = SWXMLHash.lazy(forecastData)
         let forecasts = parseForecasts(from: xml)

@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol NetworkClient {
+public protocol NetworkClient {
     func requestPublisher(for endpoint: Endpoint) -> AnyPublisher<(data: Data, response: URLResponse), Swift.Error>
 }
 

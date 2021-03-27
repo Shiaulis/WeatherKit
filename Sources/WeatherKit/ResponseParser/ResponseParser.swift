@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol ResponseParser {
+public protocol ResponseParser {
     func parse(forecastData: Data) -> Result<[ForecastDisplayItem], Swift.Error>
 }
 

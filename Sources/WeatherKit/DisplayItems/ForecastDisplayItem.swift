@@ -7,34 +7,34 @@
 
 import Foundation
 
-struct ForecastDisplayItem: Identifiable {
-    let id = UUID()
-    let naturalDateDescription: String
-    let shortDateDescription: String
-    var dayParts: [DayPartForecastDisplayItem] { [self.night, self.day].compactMap { $0 } }
-    let day: DayPartForecastDisplayItem?
-    let night: DayPartForecastDisplayItem?
+public struct ForecastDisplayItem: Identifiable {
+    public let id = UUID()
+    public let naturalDateDescription: String
+    public let shortDateDescription: String
+    public var dayParts: [DayPartForecastDisplayItem] { [self.night, self.day].compactMap { $0 } }
+    public let day: DayPartForecastDisplayItem?
+    public let night: DayPartForecastDisplayItem?
 }
 
-struct DayPartForecastDisplayItem: Identifiable {
-    enum DayPartType {
+public struct DayPartForecastDisplayItem: Identifiable {
+    public enum DayPartType {
         case day, night
     }
 
-    let id = UUID()
-    let type: DayPartType
-    let weatherIconName: String?
-    let weatherDescription: String?
-    let temperatureRange: String?
-    let description: String?
-    let places: [PlaceDisplayItem]
+    public let id = UUID()
+    public let type: DayPartType
+    public let weatherIconName: String?
+    public let weatherDescription: String?
+    public let temperatureRange: String?
+    public let description: String?
+    public let places: [PlaceDisplayItem]
 }
 
-struct PlaceDisplayItem: Identifiable {
-    let id = UUID()
-    let name: String?
-    let weatherIconName: String?
-    let temperature: String?
+public struct PlaceDisplayItem: Identifiable {
+    public let id = UUID()
+    public let name: String?
+    public let weatherIconName: String?
+    public let temperature: String?
 }
 
 extension ForecastDisplayItem {
