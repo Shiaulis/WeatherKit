@@ -29,15 +29,13 @@ public final class SWXMLResponseParser {
     // MARK: - Properties
 
     private let logger: Logger
-    private let dateFormatter: DateFormatter
+    private let formatter: ForecastDateFormatter
 
     // MARK: - Init
 
     public init() {
         self.logger = PrintLogger(moduleName: "SWXMLResponseParserLoggerModule")
-        self.dateFormatter = .init()
-        self.dateFormatter.locale = .init(identifier: "et-EE")
-        self.dateFormatter.dateFormat = "yyyy-MM-dd"
+        self.formatter = .init()
     }
 }
 
@@ -64,8 +62,8 @@ extension SWXMLResponseParser {
 
     private func parseForecast(from indexer: XMLIndexer) -> ForecastDisplayItem {
         ForecastDisplayItem(
-            naturalDateDescription: "",
-            shortDateDescription: "",
+            naturalDateDescription: self.formatter.humanReadableDescription(for: dateAttribute(from: indexer)) ?? "",
+            shortDateDescription: self.formatter.shortReadableDescription(for: dateAttribute(from: indexer)) ?? "",
             day: dayPartForecast(from: indexer[.day], dayPartType: .day),
             night: dayPartForecast(from: indexer[.night], dayPartType: .night)
         )
@@ -91,13 +89,13 @@ extension SWXMLResponseParser {
 
     // MARK: - Helpers
 
-    private func dateAttribute(from indexer: XMLIndexer) throws -> Date {
+    private func dateAttribute(from indexer: XMLIndexer) -> Date? {
         guard let dateString = indexer.element?.attribute(by: "date")?.text else {
-            throw Error.forecastDateNotFound
+            return nil
         }
 
-        guard let date = self.dateFormatter.date(from: dateString) else {
-            throw Error.forecastDateNotFound
+        guard let date = self.formatter.date(from: dateString) else {
+            return nil
         }
 
         return date
