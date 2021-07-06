@@ -20,7 +20,7 @@ final class SWXMLResponseParserTests: XCTestCase {
 
     override func setUp() {
         self.data = nil
-        self.sut = SWXMLResponseParser()
+        self.sut = SWXMLResponseParser(logger: .init(subsystem: "", category: ""))
     }
 
     override func tearDown() {

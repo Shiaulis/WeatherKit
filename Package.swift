@@ -18,25 +18,18 @@ let package = Package(
         .package(
             url: "https://github.com/drmohundro/SWXMLHash",
             from: "5.0.0"
-        ),
-        .package(
-            url: "https://github.com/Shiaulis/Logger.git",
-            .branch("main")
         )
     ],
     targets: [
         .target(
             name: "WeatherKit",
-            dependencies: ["SWXMLHash", "Logger"],
-            resources: [
-                        .copy("TestForecast.xml")
-            ]
+            dependencies: ["SWXMLHash"]
         ),
         .testTarget(
             name: "WeatherKitTests",
             dependencies: ["WeatherKit"],
             resources: [
-                        .process("TestForecast.xml")
+                .process("TestForecast.xml")
             ]
         ),
         

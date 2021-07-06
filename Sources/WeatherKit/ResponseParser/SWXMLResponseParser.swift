@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Logger
 import SWXMLHash
+import OSLog
 
 private enum Element: String {
 
@@ -33,8 +33,8 @@ public final class SWXMLResponseParser {
 
     // MARK: - Init
 
-    public init() {
-        self.logger = PrintLogger(moduleName: "SWXMLResponseParserLoggerModule")
+    public init(logger: Logger) {
+        self.logger = logger
         self.formatter = .init()
     }
 }
@@ -42,10 +42,10 @@ public final class SWXMLResponseParser {
 extension SWXMLResponseParser: ResponseParser {
 
     public func parse(forecastData: Data) -> Result<[ForecastDisplayItem], Swift.Error> {
-        self.logger.log(information: "Parsing started")
+        self.logger.debug("Parsing started")
         let xml = SWXMLHash.lazy(forecastData)
         let forecasts = parseForecasts(from: xml)
-        self.logger.log(information: "Parsing finished. Parsed \(forecasts.count) forecasts")
+        self.logger.debug("Parsing finished. Parsed \(forecasts.count) forecasts")
         
         return .success(forecasts)
     }

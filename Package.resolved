@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "Logger",
-        "repositoryURL": "https://github.com/Shiaulis/Logger.git",
-        "state": {
-          "branch": "main",
-          "revision": "7568844eeadce273f4540b0cd30ad4ea27354908",
-          "version": null
-        }
-      },
-      {
         "package": "SWXMLHash",
         "repositoryURL": "https://github.com/drmohundro/SWXMLHash",
         "state": {
