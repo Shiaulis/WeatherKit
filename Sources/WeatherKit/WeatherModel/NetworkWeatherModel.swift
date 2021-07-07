@@ -30,6 +30,16 @@ public final class NetwokWeatherModel: WeatherModel {
 
     // MARK: - Public
 
+    public func forecasts() async throws -> [ForecastDisplayItem] {
+        let (data, response) = try await self.networkClient.data(from: .forecast(for: self.weatherLocale))
+
+        try validate(response)
+        return try self.responseParser.parse(forecastData: data).get()
+    }
+
+    // TODO: Should validate response code as well
+    private func validate(_ response: URLResponse) throws {}
+
     public func provideForecasts(result: @escaping (Result<[ForecastDisplayItem], Error>) -> Void) {
         self.networkClient.requestPublisher(for: .forecast(for: self.weatherLocale))
             // TODO: Should validate response code as well

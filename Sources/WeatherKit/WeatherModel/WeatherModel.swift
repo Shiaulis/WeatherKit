@@ -11,4 +11,6 @@ public protocol WeatherModel {
     var currentForecasts: [ForecastDisplayItem] { get }
 
     func provideForecasts(result: @escaping (Result<[ForecastDisplayItem], Error>) -> Void)
+
+    func forecasts() async throws -> [ForecastDisplayItem]
 }
