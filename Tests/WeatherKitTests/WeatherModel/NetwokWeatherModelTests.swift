@@ -30,33 +30,7 @@ final class NetwokWeatherModelTests: XCTestCase {
     // MARK: - Tests
 
     func testModel() {
-        // given
-        givenCorrectData()
-
-        // when
-        var receivedDisplayItems: [ForecastDisplayItem] = []
-        let expectation = XCTestExpectation()
-        self.sut.provideForecasts { result in
-            switch result {
-            case .failure(let error):
-                XCTFail("Error is not expected: Error: \(error.localizedDescription)")
-            case .success(let displayItems):
-                receivedDisplayItems.append(contentsOf: displayItems)
-                expectation.fulfill()
-            }
-        }
-
-
-        // then
-        let waitResult = XCTWaiter.wait(for: [expectation], timeout: 1)
-        switch waitResult {
-        case .completed:
-            XCTAssertEqual(receivedDisplayItems.count, 1)
-        case .timedOut:
-            XCTFail("Forecasts was not received after timeout")
-        default:
-            XCTFail("Unexpected test fail")
-        }
+        // TODO: New async/await aproach should be covered here
     }
 
     // MARK: Helpers

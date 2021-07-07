@@ -12,8 +12,6 @@ public final class NetwokWeatherModel: WeatherModel {
 
     // MARK: - Properties
 
-    public var currentForecasts: [ForecastDisplayItem] = []
-
     private let responseParser: ResponseParser
     private let networkClient: NetworkClient
     private let weatherLocale: WeatherLocale
@@ -40,22 +38,4 @@ public final class NetwokWeatherModel: WeatherModel {
     // TODO: Should validate response code as well
     private func validate(_ response: URLResponse) throws {}
 
-    public func provideForecasts(result: @escaping (Result<[ForecastDisplayItem], Error>) -> Void) {
-        self.networkClient.requestPublisher(for: .forecast(for: self.weatherLocale))
-            // TODO: Should validate response code as well
-            .map { $0.data }
-            .parseForecast(using: self.responseParser)
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    print("")
-                case .failure(let error):
-                    result(.failure(error))
-                }
-            } receiveValue: { displayItems in
-                self.currentForecasts = displayItems
-                result(.success(displayItems))
-            }
-            .store(in: &self.disposables)
-    }
 }
