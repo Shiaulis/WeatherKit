@@ -76,6 +76,13 @@ private class MockResponseParser: ResponseParser {
 
 private class MockNetworkClient: NetworkClient {
 
+    func data(from endpoint: Endpoint) async throws -> (Data, URLResponse) {
+        let response = HTTPURLResponse(url: try! endpoint.generateURL(), statusCode: 200, httpVersion: "HTTP/1.1", headerFields: nil)!
+
+        return (self.outputData, response)
+    }
+
+
     var outputData: Data!
 
     func requestPublisher(for endpoint: Endpoint) -> AnyPublisher<(data: Data, response: URLResponse), Error> {

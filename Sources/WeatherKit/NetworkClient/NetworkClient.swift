@@ -8,7 +8,9 @@
 import Foundation
 import Combine
 
+@available(iOS 15, *)
 public protocol NetworkClient {
+    func data(from endpoint: Endpoint) async throws -> (Data, URLResponse)
     func requestPublisher(for endpoint: Endpoint) -> AnyPublisher<(data: Data, response: URLResponse), Swift.Error>
 }
 
@@ -18,7 +20,14 @@ final public class URLSessionNetworkClient: NSObject {
 
 }
 
+@available(iOS 15, *)
 extension URLSessionNetworkClient: NetworkClient {
+
+    public func data(from endpoint: Endpoint) async throws -> (Data, URLResponse) {
+        let request = try endpoint.generateRequest()
+        return try await self.urlSession.data(for: request)
+    }
+
 
     public func requestPublisher(for endpoint: Endpoint) -> AnyPublisher<(data: Data, response: URLResponse), Swift.Error> {
         let request: URLRequest
@@ -37,6 +46,7 @@ extension URLSessionNetworkClient: NetworkClient {
     public enum Error: Swift.Error {
         case noDataFoundInResponse
         case dataTaskError(urlError: URLError)
+        case notSupportedIOSVersion
     }
 
 }
