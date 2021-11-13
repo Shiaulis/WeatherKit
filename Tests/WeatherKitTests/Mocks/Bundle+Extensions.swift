@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Andrius Shiaulis on 27.03.2021.
 //
@@ -15,7 +15,6 @@ extension Bundle {
             .dataContent()
     }
 }
-
 
 private extension URL {
     func dataContent() -> Data! {

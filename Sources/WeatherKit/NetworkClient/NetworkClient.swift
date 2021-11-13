@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Andrius Shiaulis on 06.03.2021.
 //
@@ -15,7 +15,7 @@ public protocol NetworkClient {
 
 }
 
-final public class URLSessionNetworkClient: NSObject {
+public final class URLSessionNetworkClient: NSObject {
 
     private let urlSession = URLSession.shared
 

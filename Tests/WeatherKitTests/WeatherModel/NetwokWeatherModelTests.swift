@@ -56,7 +56,6 @@ private class MockNetworkClient: NetworkClient {
         return (self.outputData, response)
     }
 
-
     var outputData: Data!
 
     func requestPublisher(for endpoint: Endpoint) -> AnyPublisher<(data: Data, response: URLResponse), Error> {

@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Andrius Shiaulis on 28.03.2021.
 //
@@ -75,7 +75,7 @@ final class ForecastDateFormatter {
 
     private func string(from date: Date, calendar: Calendar, locale: Locale) -> String? {
         let formatter: DateFormatter = .init()
-        formatter.locale = self .locale
+        formatter.locale = self.locale
         formatter.calendar = calendar
         formatter.setLocalizedDateFormatFromTemplate("dMMMM")
 

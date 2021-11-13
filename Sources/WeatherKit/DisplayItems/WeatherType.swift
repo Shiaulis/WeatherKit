@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Andrius Shiaulis on 20.03.2021.
 //
@@ -107,4 +107,3 @@ enum WeatherType: String {
     case thunder = "Thunder"
     case thunderstorm = "Thunderstorm"
 }
-

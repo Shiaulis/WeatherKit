@@ -7,7 +7,7 @@ let package = Package(
     name: "WeatherKit",
     platforms: [
         .iOS("15.0"),
-        .macOS(.v11)
+        .macOS(.v11),
     ],
     products: [
         .library(
@@ -18,7 +18,7 @@ let package = Package(
         .package(
             url: "https://github.com/drmohundro/SWXMLHash",
             from: "5.0.0"
-        )
+        ),
     ],
     targets: [
         .target(
@@ -29,9 +29,9 @@ let package = Package(
             name: "WeatherKitTests",
             dependencies: ["WeatherKit"],
             resources: [
-                .process("TestForecast.xml")
+                .process("TestForecast.xml"),
             ]
         ),
-        
+
     ]
 )

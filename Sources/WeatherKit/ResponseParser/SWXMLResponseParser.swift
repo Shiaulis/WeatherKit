@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Andrius Shiaulis on 06.03.2021.
 //
@@ -22,7 +22,6 @@ private enum Element: String {
         self.init(rawValue: name)
     }
 }
-
 
 public final class SWXMLResponseParser {
 
@@ -46,7 +45,7 @@ extension SWXMLResponseParser: ResponseParser {
         let xml = SWXMLHash.lazy(forecastData)
         let forecasts = parseForecasts(from: xml)
         self.logger.debug("Parsing finished. Parsed \(forecasts.count) forecasts")
-        
+
         return .success(forecasts)
     }
 
@@ -136,7 +135,7 @@ extension SWXMLResponseParser {
         switch value {
         case 1...: return "\(String(describing: value))°"
         case 0: return "0°"
-        case (Int.min..<0): return "-\(String(describing: abs(Int32(value))))°"
+        case Int.min ..< 0: return "-\(String(describing: abs(Int32(value))))°"
         default:
             assertionFailure("Should be unreachable")
             return ""
