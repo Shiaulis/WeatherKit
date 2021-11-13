@@ -8,7 +8,6 @@
 import Foundation
 import Combine
 
-@available(iOS 15, *)
 public protocol NetworkClient {
 
     func data(from endpoint: Endpoint) async throws -> (Data, URLResponse)
@@ -21,7 +20,6 @@ public final class URLSessionNetworkClient: NSObject {
 
 }
 
-@available(iOS 15, *)
 extension URLSessionNetworkClient: NetworkClient {
 
     public func data(from endpoint: Endpoint) async throws -> (Data, URLResponse) {
