@@ -93,7 +93,7 @@ extension SWXMLResponseParser {
             return nil
         }
 
-        guard let date = self.formatter.date(from: dateString) else {
+        guard let date = try? self.formatter.date(from: dateString) else {
             return nil
         }
 

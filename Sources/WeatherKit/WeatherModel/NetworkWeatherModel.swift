@@ -16,8 +16,6 @@ public final class NetwokWeatherModel: WeatherModel {
     private let networkClient: NetworkClient
     private let weatherLocale: WeatherLocale
 
-    private var disposables: Set<AnyCancellable> = []
-
     // MARK: - Init
 
     public init(weatherLocale: WeatherLocale, responseParser: ResponseParser, networkClient: NetworkClient) {
