@@ -6,8 +6,8 @@ import PackageDescription
 let package = Package(
     name: "WeatherKit",
     platforms: [
-        .iOS("15.0"),
-        .macOS(.v11),
+        .iOS("16.0"),
+        .macOS("12.0"),
     ],
     products: [
         .library(
