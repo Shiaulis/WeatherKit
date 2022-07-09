@@ -31,21 +31,21 @@ final class ForecastDateFormatterTests: XCTestCase {
         let validDateString = "2021-11-14"
         let date = try validDateString.dateWithDefaultStrategy()
         self.sut.locale = .init(identifier: "ru")
-        XCTAssertEqual("14 ноября, Сегодня", self.sut.humanReadableDescription(for: date))
+        XCTAssertEqual("14 ноября", self.sut.humanReadableDescription(for: date))
     }
     
     func test_validDate_onEnglishLocale_hasHumanReadableDescription() throws {
         let validDateString = "2021-11-14"
         let date = try validDateString.dateWithDefaultStrategy()
         self.sut.locale = .init(identifier: "en")
-        XCTAssertEqual("November 14, Today", self.sut.humanReadableDescription(for: date))
+        XCTAssertEqual("November 14", self.sut.humanReadableDescription(for: date))
     }
     
     func test_validDate_onEstonianLocale_hasHumanReadableDescription() throws {
         let validDateString = "2021-11-14"
         let date = try validDateString.dateWithDefaultStrategy()
         self.sut.locale = .init(identifier: "et")
-        XCTAssertEqual("14. november, Täna", self.sut.humanReadableDescription(for: date))
+        XCTAssertEqual("14. november", self.sut.humanReadableDescription(for: date))
     }
     
 }

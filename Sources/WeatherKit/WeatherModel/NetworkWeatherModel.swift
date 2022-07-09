@@ -33,6 +33,13 @@ public final class NetwokWeatherModel: WeatherModel {
         return try self.responseParser.parse(forecastData: data).get()
     }
 
+    public func observations() async throws -> [ForecastDisplayItem] {
+        let (data, response) = try await self.networkClient.data(from: .observations())
+
+        try validate(response)
+        return try self.responseParser.parse(forecastData: data).get()
+    }
+
     // TODO: Should validate response code as well
     private func validate(_ response: URLResponse) throws {}
 
